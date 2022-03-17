@@ -9,6 +9,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -17,10 +19,12 @@ import { DialogOverviewExampleDialog } from './toolbar/toolbar.component';
 
 import {MatTabsModule} from '@angular/material/tabs';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     ToolbarComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
   ],
   exports:[ToolbarComponent],
   imports: [
@@ -29,12 +33,17 @@ import {MatTabsModule} from '@angular/material/tabs';
     BrowserAnimationsModule,
     MatIconModule,
     ReactiveFormsModule,
+    MatGridListModule,
     MatToolbarModule,
     MatButtonModule,
+    HttpClientModule,
     MatTabsModule,
+    MatInputModule,
     MatMenuModule,
     MatDialogModule,
+    
     FormsModule,
+    
   ],
 })
 export class SharedModule { AppModule }

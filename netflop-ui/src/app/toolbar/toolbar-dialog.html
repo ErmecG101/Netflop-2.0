@@ -1,12 +1,68 @@
+{{ user | json }}
+
 <h1>Hello!</h1>
 <mat-tab-group>
-    <mat-tab label="Login"> Content 1 </mat-tab>
-    <mat-tab label="Cadastrar-se"> Content 2 </mat-tab>
-  </mat-tab-group>
+  <mat-tab label="Login">
+    <mat-grid-list cols="12">
+      <mat-grid-tile colspan="1">
+      </mat-grid-tile>
+      <mat-grid-tile colspan="10" rowspan="6">
+        <form class="example-form">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" [(ngModel)]="user.email" matInput value="example@example.com">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password"[(ngModel)]="user.senha" matInput value="******">
+          </mat-form-field>
+          <mat-dialog-actions>
+            <button type="submit" (click)="logarConta()" mat-raised-button mat-button>Logar</button>
+          </mat-dialog-actions>
+        </form>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Cadastrar-se">
+    <mat-grid-list cols="12">
+      <mat-grid-tile colspan="1">
+      </mat-grid-tile>
+      <mat-grid-tile colspan="10" rowspan="12">
+        <form class="example-form">
+          <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input type="text" [(ngModel)]="user.nome" name="name" matInput value="Example">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" [(ngModel)]="user.email" name="email" matInput value="example@example.com">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" [(ngModel)]="user.senha" name="password" matInput value="******">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>celular</mat-label>
+            <input type="text" [(ngModel)]="user.celular" name="phone" matInput value="(99) 9 9999-9999">
+          </mat-form-field>
+          <mat-dialog-actions>
+            <button type="submit" (click)="cadastrarConta()" mat-raised-button mat-button>Cadastrar-se</button>
+          </mat-dialog-actions>
+        </form>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+</mat-tab-group>
 <mat-dialog-content>
 
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-raised-button mat-button (click)="onNoClick()" >Close</button>
-    <button mat-raised-button mat-button mat-dialog-close cdkFocusInitial>CloseButDifferent</button>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <!-- <button mat-raised-button mat-button mat-dialog-close cdkFocusInitial>CloseButDifferent</button> -->
 </mat-dialog-actions>

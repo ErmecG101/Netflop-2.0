@@ -1,6 +1,6 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-
+import { UserServiceService } from '../user-service.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -26,12 +26,37 @@ export class ToolbarComponent {
   selector: 'app-toolbar-dialog',
   templateUrl: 'toolbar-dialog.html',
 })
-export class DialogOverviewExampleDialog {
+export class DialogOverviewExampleDialog implements OnInit {
+
+  user = { "nome":"","email":"","senha":"","celular":"", "adm": false};
+  users = [];
+
+
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog> , private ngZone: NgZone,
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog> , private ngZone : NgZone,
+    private userservice : UserServiceService
   ) {}
 
+  ngOnInit(): void {
+    
+  }
+
+  
+
+  cadastrarConta() {
+    this.userservice.cadastrar(this.user)
+    .subscribe(() => {
+      this.user = {"nome":"","email":"","senha":"","celular":"", "adm": false};
+    })
+  }
+
+  logarConta(){
+    this.userservice.logar(this.user.email, this.user.senha).subscribe(()=>{
+      this.user = {"nome":"","email":"","senha":"","celular":"", "adm": false}
+    })
+  }
+
   onNoClick(): void {
-      this.dialogRef.close();  
+      this.dialogRef.close(); 
   }
 }
